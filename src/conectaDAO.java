@@ -27,7 +27,10 @@ public class conectaDAO {
         } catch (SQLException erro){
             JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
         }
+        System.out.println("Conectado ao banco de dados.");
         return conn;
+        
+        
     }
     
 }
