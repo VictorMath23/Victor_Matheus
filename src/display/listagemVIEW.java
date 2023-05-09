@@ -3,7 +3,11 @@ package display;
 
 import dao.Dao;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import models.Produto;
+import models.Tabela;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,9 +23,16 @@ public class listagemVIEW extends javax.swing.JFrame {
     /**
      * Creates new form listagemVIEW
      */
+    
+    Tabela tabela_produto = new Tabela();
+    
     public listagemVIEW() {
         initComponents();
-        listarProdutos();
+        
+        tb_produto.setModel(tabela_produto); 
+        
+        preencheTabela();
+        
     }
 
     /**
@@ -40,7 +51,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         id_produto_venda = new javax.swing.JTextPane();
         btnVendas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaProdutos = new javax.swing.JTable();
+        tb_produto = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnVender = new javax.swing.JButton();
 
@@ -69,7 +80,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             }
         });
 
-        listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tb_produto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,7 +91,7 @@ public class listagemVIEW extends javax.swing.JFrame {
                 "ID", "Nome", "Valor", "Status"
             }
         ));
-        jScrollPane1.setViewportView(listaProdutos);
+        jScrollPane1.setViewportView(tb_produto);
 
         jLabel2.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,11 +230,26 @@ public class listagemVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable listaProdutos;
+    private javax.swing.JTable tb_produto;
     // End of variables declaration//GEN-END:variables
 
     private void listarProdutos(){
         
     
+    }
+
+    private void preencheTabela() {
+        Dao produtosDao = new Dao();
+
+    try {
+        
+        
+        List produto = produtosDao.lista_Produto();
+
+        tabela_produto.preencheTabela(produto);
+        
+    }catch (Exception e) {
+        System.out.println(e);
+    }
     }
 }
