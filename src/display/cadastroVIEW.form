@@ -67,8 +67,8 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cadastroNome" min="-2" pref="253" max="-2" attributes="0"/>
-                                          <Component id="cadastroValor" min="-2" pref="253" max="-2" attributes="0"/>
+                                          <Component id="txtNome" min="-2" pref="253" max="-2" attributes="0"/>
+                                          <Component id="txtValor" min="-2" pref="253" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jSeparator2" min="-2" pref="477" max="-2" attributes="0"/>
@@ -113,11 +113,11 @@
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cadastroNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cadastroValor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtValor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -185,12 +185,12 @@
             <Property name="text" type="java.lang.String" value="Valor:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroNome">
+        <Component class="javax.swing.JTextField" name="txtNome">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroNomeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroValor">
+        <Component class="javax.swing.JTextField" name="txtValor">
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastrar">
           <Properties>
