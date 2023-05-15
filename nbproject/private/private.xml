@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/conectaDAO.java</file>
-            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/cadastroVIEW.java</file>
-            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/ProdutosDTO.java</file>
-            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/ProdutosDAO.java</file>
-            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/listagemVIEW.java</file>
+            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/dao/Dao.java</file>
+            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/display/cadastroVIEW.java</file>
+            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/display/listagemVIEW.java</file>
+            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/models/Produto.java</file>
+            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/Conexao/ConectBD.java</file>
+            <file>file:/C:/Users/vsilva18/Documents/SENAC/GIT/LeiloesTDSat/src/models/Tabela.java</file>
         </group>
     </open-files>
 </project-private>

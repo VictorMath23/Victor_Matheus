@@ -4,6 +4,7 @@ package display;
 import dao.Dao;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.Produto;
@@ -168,12 +169,42 @@ public class listagemVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        String id = id_produto_venda.getText();
-        
-        Dao produtosdao = new Dao();
-        
-        //produtosdao.venderProduto(Integer.parseInt(id));
-        listarProdutos();
+        try {
+            
+            Dao statusDao = new Dao();
+
+            int selecao = tb_produto.getSelectedRow();
+            
+            if(selecao == -1){
+                JOptionPane.showMessageDialog(null, "Tabela está vazia ou não há ideia Selecionado.\n"
+                                                              + " Por favor, verificar e tentar novamente");
+                }else{
+                    int dialog = JOptionPane.showConfirmDialog(null, "Deseja Realmente vender este item?");
+
+                    if(dialog == JOptionPane.YES_OPTION){
+
+                        int id = (int) tb_produto.getValueAt(selecao, 0);
+                        String status = "Vendido";
+
+                        statusDao.atualizaStatus(status, id);
+
+                        JOptionPane.showMessageDialog(null, "Item vendido!");
+  
+
+                        limpaTabela();
+
+                        preencheTabela();
+
+                    }else{
+
+                       JOptionPane.showMessageDialog(null, "Alteração Cancelada");
+
+                    }
+                }
+            } catch (IndexOutOfBoundsException e) {
+                JOptionPane.showMessageDialog(null, "Selecione um produto antes de tentar efetuar uma venda.");
+                System.out.println(e);
+            }
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
@@ -251,5 +282,10 @@ public class listagemVIEW extends javax.swing.JFrame {
     }catch (Exception e) {
         System.out.println(e);
     }
+    }
+
+    private void limpaTabela() {
+        
+        tabela_produto.removeDados();
     }
 }

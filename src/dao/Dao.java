@@ -108,6 +108,25 @@ public class Dao {
         return null;
     }
     
+    public void atualizaStatus(String status, int id){
+        
+        PreparedStatement stmt = null;
+    String sql = "UPDATE cenaflix.produtos SET status = ? WHERE id = ?"; 
+    
+    try {
+        stmt = nova_Conexao.conectBD().prepareStatement(sql);
+        stmt.setString(1, status);
+        stmt.setInt(2, id);
+        stmt.executeUpdate();
+    } catch (SQLException sqle) {
+        JOptionPane.showMessageDialog(null, "Erro ao Atualizar Dados!\n"
+                                                       + "Por favor, verificar os dados que queira alterar e tentar Novamente.");
+        System.out.println(sqle.getMessage());
+    } finally {
+        nova_Conexao.desconectBD();
+    }
+    }
+    
 }  
 
 
