@@ -49,7 +49,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        id_produto_venda = new javax.swing.JTextPane();
+        txtId = new javax.swing.JTextPane();
         btnVendas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_produto = new javax.swing.JTable();
@@ -62,6 +62,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         btnVoltar.setText("Voltar");
+        btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -72,9 +73,10 @@ public class listagemVIEW extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Lista de Produtos");
 
-        jScrollPane2.setViewportView(id_produto_venda);
+        jScrollPane2.setViewportView(txtId);
 
         btnVendas.setText("Consultar Vendas");
+        btnVendas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVendasActionPerformed(evt);
@@ -92,6 +94,11 @@ public class listagemVIEW extends javax.swing.JFrame {
                 "ID", "Nome", "Valor", "Status"
             }
         ));
+        tb_produto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_produtoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_produto);
 
         jLabel2.setFont(new java.awt.Font("Lucida Fax", 0, 14)); // NOI18N
@@ -99,6 +106,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         jLabel2.setText("Vender Produto (ID)");
 
         btnVender.setText("Vender");
+        btnVender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVenderActionPerformed(evt);
@@ -176,7 +184,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             int selecao = tb_produto.getSelectedRow();
             
             if(selecao == -1){
-                JOptionPane.showMessageDialog(null, "Tabela está vazia ou não há ideia Selecionado.\n"
+                JOptionPane.showMessageDialog(null, "Tabela está vazia ou não há produto Selecionado.\n"
                                                               + " Por favor, verificar e tentar novamente");
                 }else{
                     int dialog = JOptionPane.showConfirmDialog(null, "Deseja Realmente vender este item?");
@@ -208,13 +216,27 @@ public class listagemVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-        //vendas.setVisible(true);
+        listagemVendas listvendas = new listagemVendas();
+        listvendas.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        cadastroVIEW cadastroVIEW = new cadastroVIEW();
+        cadastroVIEW.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void tb_produtoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_produtoMouseClicked
+        int selecao = tb_produto.getSelectedRow();
+        
+        String valor_id = tb_produto.getValueAt(selecao, 0).toString();
+        
+        txtId.setText(valor_id);
+        
+        
+        
+    }//GEN-LAST:event_tb_produtoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,13 +277,13 @@ public class listagemVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnVendas;
     private javax.swing.JButton btnVender;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JTextPane id_produto_venda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tb_produto;
+    private javax.swing.JTextPane txtId;
     // End of variables declaration//GEN-END:variables
 
     private void listarProdutos(){

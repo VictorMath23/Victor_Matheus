@@ -127,6 +127,46 @@ public class Dao {
     }
     }
     
+    public List listaProdutosVendidos() {
+
+        String sql = "SELECT * FROM cenaflix.produtos WHERE status = 'Vendido'; ";
+
+        List<Produto> retorno_Produto = new ArrayList<>();
+
+        try {
+
+            PreparedStatement stmt = nova_Conexao.conectBD().prepareStatement(sql);
+
+            ResultSet resultado = stmt.executeQuery();
+
+            while (resultado.next()) {
+
+                Produto produto = new Produto();
+
+                produto.setId(resultado.getInt("produtos.id"));
+                produto.setNome(resultado.getString("produtos.nome"));
+                produto.setValor(resultado.getInt("produtos.valor"));
+                produto.setStatus(resultado.getString("produtos.status"));
+                
+
+                retorno_Produto.add(produto);
+            }
+
+            return retorno_Produto;
+           
+
+        } catch (SQLException sqle) {
+            JOptionPane.showMessageDialog(null, "Falha ao Carregar Tabela!");
+            System.out.println(sqle.getMessage());
+
+        } finally {
+            
+            nova_Conexao.desconectBD();
+        }
+
+        return null;
+    }
+    
 }  
 
 
